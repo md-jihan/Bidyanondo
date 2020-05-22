@@ -3,97 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Press</title>
+    <title>Gallery</title>
     <link rel="shortcut icon" href="./img/logo - Copy.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="./css/all.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/fontawesome.min.css">
-    <link rel="stylesheet" href="./css/slick.css">
-    <link rel="stylesheet" href="./css/slick-theme.css">
-    <link rel="stylesheet" href="./css/style1.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/fontawesome.min.css">
+    <link rel="stylesheet" href="../css/lightbox.min.css">
+    <link rel="stylesheet" href="../css/style1.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".button").click(function(){
+                var name = $(this).attr("data-filter");
+                if(name == "all"){
+                    $(".filter").show("2000");
+                }
+                else{
+                    $(".filter").not("."+name).hide("2000");
+                    $(".filter").filter("."+name).show("2000");
+                }
+            });
+            $(".navigation a").click(function(){
+                $(this).addClass("active").siblings().removeClass("active")
+            });
+        });
+    </script>
 
     <style>
 /*========================================*/
-.slider {
-        width: 100%;
-        margin: 100px auto;
-    }
-
-    .slick-slide {
-      margin: 0px 0px;
-    }
-
-    .slick-slide img {
-      width: 100%;
-    }
-
-    .slick-prev:before,
-    .slick-next:before {
-      color: black;
-    }
-    .slick-slide {
-      transition: all ease-in-out .3s;
-      opacity: .2;
-    }
-    .slick-slide .slider-body-text{
-      opacity: 0;
-    }
-    .slick-active {
-      opacity: .5;
-    }
-    .slick-active .slider-body-text{
-      opacity: 0;
-    }
-    .slick-current {
-      opacity: 1;
-    }
-    .slick-current .slider-body-text{
-      opacity: 1;
-      background-color: #00a78e;
-    }
-    .slider-body-text {
-      color: #fff;
-      padding: 13px 15px;
-      font-size: 20px;
-      border-radius: 0px 0px 5px 5px;
-      height: 150px;
-    }
-    .slider-body-text h6,.slider-body-text .fas{
-      color: #fff;
-    }
-    .slick-prev{
-      left: 0;
-      z-index: 1;
-    }
-    .slick-next{
-      right: 0;
-    }
-    .slick-prev:hover, .slick-next:hover{
-      background: #00a78e;
-    }
-    .slick-prev, .slick-next {
-	font-size: 0;
-	line-height: 0;
-	position: absolute;
-	top: 50%;
-	display: block;
-	width: 30px;
-	height: 50px;
-	padding: 0;
-	-webkit-transform: translate(0, -50%);
-	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	cursor: pointer;
-	color: transparent;
-	border: none;
-	outline: none;
-	background: #00a78e;
-}
-
-/*========================================*/
 .clearfix.gallery-top {
-	background: url(./img/gallery_background_image.jpg) center/cover local no-repeat;
+	background: url(../img/gallery_background_image.jpg) center/cover local no-repeat;
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 302px;
@@ -145,7 +85,23 @@
     background-color: #00a78e;
 }
 /*======================================*/
-
+.gallery{
+    margin: 10px 50px;
+}
+@media (max-width: 575.98px) {
+  .gallery{
+    margin: 0px;
+}
+}
+.gallery img{
+    width: 332px;
+    padding: 15px;
+    transition: 1s;
+}
+.gallery img:hover{
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
 /*=======================================*/
 .navigation{
             padding: 25px 0px;
@@ -178,8 +134,8 @@
   <header class="clearfix">
     <div class="container-fluid">
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="./bidyanondo.html">
-                <img src="./img/logo.png" alt="">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../img/logo.png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -254,48 +210,108 @@
             </div>
           </nav>
     </div>
-</header>
+  </header>
 
     <main class="clearfix">
-        <section class="clearfix gallery-top" style="background: url(./img/about_background_image.jpg) center/cover local no-repeat;">
-            <img src="./img/about_background_image.jpg" alt="">
+        <section class="clearfix gallery-top" style="background: url(../img/gallery_background_image.jpg) center/cover local no-repeat;">
+            <img src="../img/gallery_background_image.jpg" alt="">
             <div class="gallery-top-body">
-                <h1><font>PRESS</font></h1>
-                <p><a href="./bidyanondo.html">HOME </a> / <font>Press</font></p>
+                <h1><font>GALLERY</font></h1>
+                <p><a href="../index.html">HOME</a> / <font>Gallery</font></p>
                 <a href="#"><button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-projects-danger">DONATE</button></a>
             </div>
         </section>
 
-        <section class="clearfix section-padding">
+        <section class="clearfix container">
             <div class="navigation">
                 <a href="#" data-filter="all" class="button active" >All</a> <span>/</span>
-                <a href="#" data-filter="one" class="button">Ramadan activities</a> <span>/</span>
-                <a href="#" data-filter="two" class="button">1 Taka Ahar</a> <span>/</span>
-                <a href="#" data-filter="three" class="button">Education Projects</a> <span>/</span>
-                <a href="#" data-filter="four" class="button">Rohinga Campaign</a>
+                <a href="#" data-filter="one" class="button">IFTAR & SEHERI</a> <span>/</span>
+                <a href="#" data-filter="two" class="button">EDUCATION</a> <span>/</span>
+                <a href="#" data-filter="three" class="button">VOLUNTEERS SERVICE</a> <span>/</span>
+                <a href="#" data-filter="four" class="button">EID FOR EVERY MUSLIM</a> <span>/</span>
+                <a href="#" data-filter="five" class="button">TRAINING PROGRAM</a> <span>/</span>
+                <a href="#" data-filter="six" class="button">ORPHANAGE PROJECTS</a>
             </div>
-            <div class="press  ">
-                <div class="slick-slider slider">
-                    <div><img class="" src="./img/bidyanondo-press-34-1557843088.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> May 13th,2019</h6><p>Country’s first ever digital iftar vending machine: This Ramadan...</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-8-1556268049.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> December 12th,2018</h6><p>"1 taka" meals providing nutritional lifeline to Bangladesh's str...</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-17-1556262084.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> January 9th,2019</h6><p>1 TK meal, 1 TK medical treatment</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-2-1556269534.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> January 10th,2019</h6><p>বিদ্যানন্দ: জীবনের আনন্দপাঠ</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-3-1556269240.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> December 10th,2019</h6><p>শুধু পরীক্ষা পাস করতে নয়, নিজের খুশিতেই ওরা পড়তে আসে বিদ্যানন্দে</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-4-1556269060.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> January 1th,2019</h6><p>A Bangladeshi Man Who Knows Hunger All Too Well Provides Affordab...</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-5-1556268560.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> January 8th,2019</h6><p>Bidyanondo: A haven for the deprived</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-12-1556265046.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> January 2nd,2019</h6><p>সুবিধাবঞ্চিতদের সেহরি খাওয়ান যারা</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-13-1556260767.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>This estimate marks a significant jump from the latest available...</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-14-1556264911.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>Bidyanondo brings tasty nutrition to Rohingya children</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-15-1556264626.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>পিছিয়ে পড়াদের আনন্দ ‘বিদ্যানন্দ’</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-35-1558187664.JPG" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>তারুণ্যের অনন্য প্রয়াস ‘বিদ্যানন্দ ফাউন্ডেশন’</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-36-1558195370.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>সুবিধাবঞ্চিত শিশুদের অন্নদাতা এক কিশোর কুমারের গল্প</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-6-1556268320.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>সুবিধাবঞ্চিত শিশুদের নিয়ে যাদের পথচলা</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-5-1556268560.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>অল্প টাকায় আপনিও দরিদ্র শিশুদের খাবার দিতে পারেন</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-9-1556266152.jpg" alt=""> <div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> February 6th,2019</h6><p>ইফতারি পেয়ে হাসি ফোটে মানুষের মুখে</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-10-1556265680.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> May 18th,2019</h6><p>বইমেলায় বিক্রেতা বিহীন স্টল | এক টাকায় খাবারের আরও একটি ব্যতিক্...</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-11-1556265133.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> December 8th,2019</h6><p>আর টি ভি এস এম সি মনিমিক্স প্রেরণা পদক ২০১৮ বিদ্যানন্দ ফাউন্ডেশন</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    <div><img class="" src="./img/bidyanondo-press-15-1556264626.jpg" alt=""><div class="slider-body-text"><h6><i class="fas fa-calendar-alt"></i> </h6><p>Country’s first ever digital iftar vending machine: This Ramadan...</p><a href="#" style="color: #000; text-decoration: none;">Read More &RightArrow;</a></div> </div>
-                    
+            <div class="gallery">
+                <div class="ImageContainer">
+                    <div class="filter one"><a data-lightbox="mygallery" href="../images/gallery/iftar & seheri/74-big.jpg"><img src="../images/gallery/iftar & seheri/74-big.jpg" alt=""></a></div>
+                    <div class="filter one"><a data-lightbox="mygallery" href="../images/gallery/iftar & seheri/75-big.jpg"><img src="../images/gallery/iftar & seheri/75-big.jpg" alt=""></a></div>
+                    <div class="filter one"><a data-lightbox="mygallery" href="../images/gallery/iftar & seheri/76-big.jpg"><img src="../images/gallery/iftar & seheri/76-big.jpg" alt=""></a></div>
+                    <div class="filter one"><a data-lightbox="mygallery" href="../images/gallery/iftar & seheri/77-big.jpg"><img src="../images/gallery/iftar & seheri/77-big.jpg" alt=""></a></div>
+                    <div class="filter one"><a data-lightbox="mygallery" href="../images/gallery/iftar & seheri/78-big.jpg"><img src="../images/gallery/iftar & seheri/78-big.jpg" alt=""></a></div>
+                    <div class="filter one"><a data-lightbox="mygallery" href="../images/gallery/iftar & seheri/79-big.jpg"><img src="../images/gallery/iftar & seheri/79-big.jpg" alt=""></a></div>
+                    <div class="filter one"><a data-lightbox="mygallery" href="../images/gallery/iftar & seheri/74-big.jpg"><img src="../images/gallery/iftar & seheri/80-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/52-big.jpg"><img src="../images/gallery/education/52-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/53-big.jpg"><img src="../images/gallery/education/53-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/54-big.jpg"><img src="../images/gallery/education/54-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/55-big.jpg"><img src="../images/gallery/education/55-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/56-big.jpg"><img src="../images/gallery/education/56-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/57-big.jpg"><img src="../images/gallery/education/57-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/58-big.jpg"><img src="../images/gallery/education/58-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/59-big.jpg"><img src="../images/gallery/education/59-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/60-big.jpg"><img src="../images/gallery/education/60-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/61-big.jpg"><img src="../images/gallery/education/61-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/62-big.jpg"><img src="../images/gallery/education/62-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/63-big.jpg"><img src="../images/gallery/education/63-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/65-big.jpg"><img src="../images/gallery/education/65-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/66-big.jpg"><img src="../images/gallery/education/66-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/67-big.jpg"><img src="../images/gallery/education/67-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/68-big.jpg"><img src="../images/gallery/education/68-big.jpg" alt=""></a></div>
+                    <div class="filter two"><a data-lightbox="mygallery" href="../images/gallery/education/69-big.jpg"><img src="../images/gallery/education/69-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/121-big.jpg"><img src="../images/gallery/volunteers service/121-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/122-big.jpg"><img src="../images/gallery/volunteers service/122-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/123-big.jpg"><img src="../images/gallery/volunteers service/123-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/124-big.jpg"><img src="../images/gallery/volunteers service/124-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/125-big.jpg"><img src="../images/gallery/volunteers service/125-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/126-big.jpg"><img src="../images/gallery/volunteers service/126-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/127-big.jpg"><img src="../images/gallery/volunteers service/127-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/128-big.jpg"><img src="../images/gallery/volunteers service/128-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/129-big.jpg"><img src="../images/gallery/volunteers service/129-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/130-big.jpg"><img src="../images/gallery/volunteers service/130-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/131-big.jpg"><img src="../images/gallery/volunteers service/131-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/132-big.jpg"><img src="../images/gallery/volunteers service/132-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/133-big.jpg"><img src="../images/gallery/volunteers service/133-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/134-big.jpg"><img src="../images/gallery/volunteers service/134-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/135-big.jpg"><img src="../images/gallery/volunteers service/135-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/136-big.jpg"><img src="../images/gallery/volunteers service/136-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/137-big.jpg"><img src="../images/gallery/volunteers service/137-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/138-big.jpg"><img src="../images/gallery/volunteers service/138-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/139-big.jpg"><img src="../images/gallery/volunteers service/139-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/140-big.jpg"><img src="../images/gallery/volunteers service/140-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/13-big.jpg"><img src="../images/gallery/volunteers service/13-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/14-big.jpg"><img src="../images/gallery/volunteers service/14-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/21-big.jpg"><img src="../images/gallery/volunteers service/21-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/22-big.jpg"><img src="../images/gallery/volunteers service/22-big.jpg" alt=""></a></div>
+                    <div class="filter three"><a data-lightbox="mygallery" href="../images/gallery/volunteers service/23-big.jpg"><img src="../images/gallery/volunteers service/23-big.jpg" alt=""></a></div>
+                    <div class="filter four"><a data-lightbox="mygallery" href="../images/gallery/eid for every muslim/70-big.jpg"><img src="../images/gallery/eid for every muslim/70-big.jpg" alt=""></a></div>
+                    <div class="filter four"><a data-lightbox="mygallery" href="../images/gallery/eid for every muslim/71-big.jpg"><img src="../images/gallery/eid for every muslim/71-big.jpg" alt=""></a></div>
+                    <div class="filter four"><a data-lightbox="mygallery" href="../images/gallery/eid for every muslim/72-big.jpg"><img src="../images/gallery/eid for every muslim/72-big.jpg" alt=""></a></div>
+                    <div class="filter four"><a data-lightbox="mygallery" href="../images/gallery/eid for every muslim/73-big.jpg"><img src="../images/gallery/eid for every muslim/73-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/100-big.jpg"><img src="../images/gallery/training program/100-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/101-big.jpg"><img src="../images/gallery/training program/101-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/102-big.jpg"><img src="../images/gallery/training program/102-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/103-big.jpg"><img src="../images/gallery/training program/103-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/99-big.jpg"><img src="../images/gallery/training program/99-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/98-big.jpg"><img src="../images/gallery/training program/98-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/97-big.jpg"><img src="../images/gallery/training program/97-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/96-big.jpg"><img src="../images/gallery/training program/96-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/95-big.jpg"><img src="../images/gallery/training program/95-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/94-big.jpg"><img src="../images/gallery/training program/94-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/93-big.jpg"><img src="../images/gallery/training program/93-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/92-big.jpg"><img src="../images/gallery/training program/92-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/91-big.jpg"><img src="../images/gallery/training program/91-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/90-big.jpg"><img src="../images/gallery/training program/90-big.jpg" alt=""></a></div>
+                    <div class="filter five"><a data-lightbox="mygallery" href="../images/gallery/training program/89-big.jpg"><img src="../images/gallery/training program/89-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/112-big.jpg"><img src="../images/gallery/orphanage projects/112-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/113-big.jpg"><img src="../images/gallery/orphanage projects/113-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/114-big.jpg"><img src="../images/gallery/orphanage projects/114-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/115-big.jpg"><img src="../images/gallery/orphanage projects/115-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/116-big.jpg"><img src="../images/gallery/orphanage projects/116-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/117-big.jpg"><img src="../images/gallery/orphanage projects/117-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/118-big.jpg"><img src="../images/gallery/orphanage projects/118-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/119-big.jpg"><img src="../images/gallery/orphanage projects/119-big.jpg" alt=""></a></div>
+                    <div class="filter six"><a data-lightbox="mygallery" href="../images/gallery/orphanage projects/120-big.jpg"><img src="../images/gallery/orphanage projects/120-big.jpg" alt=""></a></div>
+
                 </div>
             </div>
 
@@ -318,7 +334,7 @@
     <footer class="footer">
         <div class="container clearfix section-padding">
           <div class="col float-left col-md-5">
-           <img src="./img/logo - Copy.png" alt="">
+           <img src="../img/logo - Copy.png" alt="">
            <br><br>
            <p>Bidyanondo (Learn for Fun) is an educational voluntary organization in Bangladesh. The official registration No. is S-12258/2015). Bidyanondo has been running by 40 officers and hundreds of volunteers, whose mission is t...</p>
             <br>
@@ -379,7 +395,7 @@
           <span class="close" style="position: relative;"><div class="close-close-btn"> &times;</div></span>
           <div class="col-md-12">
             <div class="col-md-3 float-left">
-              <img class="img img-fluid img-responsive" src="./img/logo - Copy.png">
+              <img class="img img-fluid img-responsive" src="../img/logo - Copy.png">
             </div>
             <div class="col-md-9 float-left">
               <div class="modal-massenger-top text-secondary"><p>বিদ্যানন্দ - Bidyanondo</p></div>
@@ -535,28 +551,28 @@
                           <textarea name="Comment" id="" cols="30" placeholder="Comments here..." rows="10"></textarea>
                           <button type="submit"><i class="fas fa-money-bill-alt"></i> PAY WITH CARD/MOBILE BANKING/BANK TRANSFER</button>
                           <div class="pay-img">
-                            <img src="./img/pay/ab_direct-sq.png" alt="">
-                            <img src="./img/pay/bankasia-sq.png" alt="">
-                            <img src="./img/pay/bkash-sq.png" alt="">
-                            <img src="./img/pay/citytouch.png" alt="">
-                            <img src="./img/pay/dbbl-nexus-sq.png" alt="">
-                            <img src="./img/pay/dbbl_mobile-sq.png" alt="">
-                            <img src="./img/pay/dmoney.png" alt="">
-                            <img src="./img/pay/ipay.png" alt="">
-                            <img src="./img/pay/islamibank-sq.png" alt="">
-                            <img src="./img/pay/masterc-sq.png" alt="">
-                            <img src="./img/pay/mcash-sq.png" alt="">
-                            <img src="./img/pay/mobilemoney.png" alt="">
-                            <img src="./img/pay/mtb-sq.png" alt="">
-                            <img src="./img/pay/my-cash-sq.png" alt="">
-                            <img src="./img/pay/nogod-logo.png" alt="">
-                            <img src="./img/pay/okwallet-sq.png" alt="">
-                            <img src="./img/pay/paypal.png" alt="">
-                            <img src="./img/pay/sure-cash.png" alt="">
-                            <img src="./img/pay/tapnpay-sq.png" alt="">
-                            <img src="./img/pay/upay.png" alt="">
-                            <img src="./img/pay/visa-sq.png" alt="">
-                            <img src="./img/pay/amx.png" alt="">
+                            <img src="../img/pay/ab_direct-sq.png" alt="">
+                            <img src="../img/pay/bankasia-sq.png" alt="">
+                            <img src="../img/pay/bkash-sq.png" alt="">
+                            <img src="../img/pay/citytouch.png" alt="">
+                            <img src="../img/pay/dbbl-nexus-sq.png" alt="">
+                            <img src="../img/pay/dbbl_mobile-sq.png" alt="">
+                            <img src="../img/pay/dmoney.png" alt="">
+                            <img src="../img/pay/ipay.png" alt="">
+                            <img src="../img/pay/islamibank-sq.png" alt="">
+                            <img src="../img/pay/masterc-sq.png" alt="">
+                            <img src="../img/pay/mcash-sq.png" alt="">
+                            <img src="../img/pay/mobilemoney.png" alt="">
+                            <img src="../img/pay/mtb-sq.png" alt="">
+                            <img src="../img/pay/my-cash-sq.png" alt="">
+                            <img src="../img/pay/nogod-logo.png" alt="">
+                            <img src="../img/pay/okwallet-sq.png" alt="">
+                            <img src="../img/pay/paypal.png" alt="">
+                            <img src="../img/pay/sure-cash.png" alt="">
+                            <img src="../img/pay/tapnpay-sq.png" alt="">
+                            <img src="../img/pay/upay.png" alt="">
+                            <img src="../img/pay/visa-sq.png" alt="">
+                            <img src="../img/pay/amx.png" alt="">
                           </div>
                         </form>
                   </div>
@@ -630,28 +646,28 @@
                           <textarea name="Comment" id="" cols="30" placeholder="Comments here..." rows="10"></textarea>
                           <button type="submit"><i class="fas fa-money-bill-alt"></i> PAY WITH CARD/MOBILE BANKING/BANK TRANSFER</button>
                           <div class="pay-img">
-                            <img src="./img/pay/ab_direct-sq.png" alt="">
-                            <img src="./img/pay/bankasia-sq.png" alt="">
-                            <img src="./img/pay/bkash-sq.png" alt="">
-                            <img src="./img/pay/citytouch.png" alt="">
-                            <img src="./img/pay/dbbl-nexus-sq.png" alt="">
-                            <img src="./img/pay/dbbl_mobile-sq.png" alt="">
-                            <img src="./img/pay/dmoney.png" alt="">
-                            <img src="./img/pay/ipay.png" alt="">
-                            <img src="./img/pay/islamibank-sq.png" alt="">
-                            <img src="./img/pay/masterc-sq.png" alt="">
-                            <img src="./img/pay/mcash-sq.png" alt="">
-                            <img src="./img/pay/mobilemoney.png" alt="">
-                            <img src="./img/pay/mtb-sq.png" alt="">
-                            <img src="./img/pay/my-cash-sq.png" alt="">
-                            <img src="./img/pay/nogod-logo.png" alt="">
-                            <img src="./img/pay/okwallet-sq.png" alt="">
-                            <img src="./img/pay/paypal.png" alt="">
-                            <img src="./img/pay/sure-cash.png" alt="">
-                            <img src="./img/pay/tapnpay-sq.png" alt="">
-                            <img src="./img/pay/upay.png" alt="">
-                            <img src="./img/pay/visa-sq.png" alt="">
-                            <img src="./img/pay/amx.png" alt="">
+                            <img src="../img/pay/ab_direct-sq.png" alt="">
+                            <img src="../img/pay/bankasia-sq.png" alt="">
+                            <img src="../img/pay/bkash-sq.png" alt="">
+                            <img src="../img/pay/citytouch.png" alt="">
+                            <img src="../img/pay/dbbl-nexus-sq.png" alt="">
+                            <img src="../img/pay/dbbl_mobile-sq.png" alt="">
+                            <img src="../img/pay/dmoney.png" alt="">
+                            <img src="../img/pay/ipay.png" alt="">
+                            <img src="../img/pay/islamibank-sq.png" alt="">
+                            <img src="../img/pay/masterc-sq.png" alt="">
+                            <img src="../img/pay/mcash-sq.png" alt="">
+                            <img src="../img/pay/mobilemoney.png" alt="">
+                            <img src="../img/pay/mtb-sq.png" alt="">
+                            <img src="../img/pay/my-cash-sq.png" alt="">
+                            <img src="../img/pay/nogod-logo.png" alt="">
+                            <img src="../img/pay/okwallet-sq.png" alt="">
+                            <img src="../img/pay/paypal.png" alt="">
+                            <img src="../img/pay/sure-cash.png" alt="">
+                            <img src="../img/pay/tapnpay-sq.png" alt="">
+                            <img src="../img/pay/upay.png" alt="">
+                            <img src="../img/pay/visa-sq.png" alt="">
+                            <img src="../img/pay/amx.png" alt="">
                           </div>
                         </form>
                   </div>
@@ -662,45 +678,9 @@
         </div>
         </section> 
 
-    <script src="./js/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".button").click(function(){
-                var name = $(this).attr("data-filter");
-                if(name == "all"){
-                    $(".filter").show("2000");
-                }
-                else{
-                    $(".filter").not("."+name).hide("2000");
-                    $(".filter").filter("."+name).show("2000");
-                }
-            });
-            $(".navigation a").click(function(){
-                $(this).addClass("active").siblings().removeClass("active")
-            });
-        });
-    </script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="./js/slick.min.js"></script>
-    <script src="./js/all.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/fontawesome.min.js"></script>
-    <script>
-        $(document).ready(function(){
-$('.slick-slider').slick({
-        dots: true,
-        infinite: true,
-        centerPadding:'0px',
-        centerMode: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay:true,
-        autoplaySpeed:2000
-});
-      });
-      </script>
-          
-      
+    <script src="../js/lightbox-plus-jquery.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/fontawesome.min.js"></script>
 </body>
 </html>
